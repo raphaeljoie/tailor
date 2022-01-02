@@ -1,0 +1,39 @@
+{
+  "name": "tailor",
+  "version": "0.1.0",
+  "description": "Chain async tasks",
+  "main": "dist/bundles/bundle.umd.js",
+  "module": "dist/bundles/bundle.esm.js",
+  "type": "module",
+  "exports": {
+    "import": "./dist/bundles/bundle.esm.js",
+    "require": "./dist/bundles/bundle.umd.js"
+  },
+  "scripts": {
+    "test": "mocha",
+    "build": "npm-run-all build:*",
+    "build:esm": "cross-env BABEL_ENV=esmUnbundled babel src --out-dir 'dist/esm' --source-maps",
+    "build:cjs": "babel src --plugins @babel/plugin-transform-modules-commonjs --out-dir 'dist/cjs' --source-maps",
+    "build:bundles": "rollup -c rollup.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ekwal": "^0.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.7",
+    "@babel/core": "^7.16.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.7",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.1.2",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "cross-env": "^7.0.3",
+    "mocha": "^9.1.3",
+    "npm-run-all": "^4.1.5",
+    "rollup": "^2.62.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}
